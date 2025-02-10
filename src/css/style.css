@@ -462,6 +462,11 @@ body {
   z-index: -1;
 }
 
+:has(> .state-layer):hover > .state-layer {opacity: 0.08; }
+
+:has(> .state-layer):is(:focus, :focus-visible, :focus-within) > .state-layer {opacity: 0.12; }
+
+:has(> .state-layer):active > .state-layer {opacity: 0.16; }
 
 
 
@@ -571,6 +576,21 @@ body {
 [data-theme='dark'] .logo-light,
 .logo-dark { display: none;}
 [data-theme='dark']  .logo-dark {display: block;}
+
+.sidebar > .wrapper-2 {padding-inline: var(--spacing-4)var(--spacing-6);}
+
+.sidebar .nav{overflow-y: auto;}
+.nav-item {
+  color: var(--on-surface-variant);
+  --state-layer-bg:var(--on-surface-variant);
+  height: 56px;
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-05);
+  padding-inline: var(--spacing-4) var(--spacing-6);
+  border-radius: var(--radius-full);
+  cursor: pointer;
+}
 
 
 /*-----------------------------------*\
