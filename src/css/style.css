@@ -660,9 +660,27 @@ body {
   margin-block-end: var(--spacing-4);
  }
 
+ .modal-footer {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: var(--spacing-2);
+  padding-block-start: var(--spacing-2);
+ }
+
+ .modal-footer .time {
+  flex-grow: 1;
+  color: var(--on-surface-variant);
+ }
+
+
+
+
 /**
  * Button
  */
+
+ 
 
 
 
