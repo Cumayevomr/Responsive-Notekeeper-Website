@@ -500,6 +500,17 @@ body {
   visibility: visible;
 }
 
+.modal-overlay {
+  z-index: 6;
+  visibility: visible;
+  animation: fade-overlay var(--tr-duration-short) var(--tr-easing-linear) forwards;
+}
+
+@keyframes fade-overlay {
+  0% {opacity: 0;}
+  100% {opacity: 0.5;}
+}
+
 
 
 /*-----------------------------------*\
@@ -680,9 +691,35 @@ body {
  * Button
  */
 
- 
+ .btn {
+  height: 40px;
+  max-width: max-content;
+  display: grid;
+  align-items: center;
+  border-radius: var(--radius-full);
+ }
+
+ .btn.text {
+  color: var(--primary);
+  --state-layer-bg: var(var(--primary));
+  padding-inline: var(--spacing-3);
+ }
+
+ .btn .text:disabled {color: var(--on-surface);}
 
 
+ .btn .text:disabled .text-label-large {opacity: 0.38;}
+
+
+ .btn.fill {
+  background-color: var(--primary);
+  color: var(--on-primary);
+  --state-layer-bg: var(--on-primary);
+  padding-inline: var(--spacing-6);
+  transition: box-shadow var(--tr-duration-short) var(--tr-easing-emphasized);
+ }
+
+ .btn.fill:hover:not(:focus) {box-shadow: var(--shadow-1);}
 
 /**
  * Tooltip
