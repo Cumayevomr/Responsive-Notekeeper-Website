@@ -540,7 +540,15 @@ body {
  * Card
  */
 
- 
+ .card {
+  background-color: var(--surface);
+  padding: var(--spacing-4);
+  border: 1px solid var(--outline-variant);
+  border-radius: var(--radius-large );
+  display: flex;
+  flex-direction: column;
+  --state-layer-bg: var(--on-surface);
+ }
 
 
 
