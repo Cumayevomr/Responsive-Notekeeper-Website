@@ -468,6 +468,18 @@ body {
 
 :has(> .state-layer):active > .state-layer {opacity: 0.16; }
 
+.custom-scrollbar::-webkit-scrollbar {width: 8px; }
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background-color: var(--surface-container-low);
+  border-radius: 4px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb { 
+  background-color: var(--outline-variant);
+  border-radius: 4px;
+}
+
 
 
 /*-----------------------------------*\
@@ -609,6 +621,15 @@ body {
 .nav-item:where(:hover, :focus-within) .icon-btn {
   opacity: 1;
   visibility: visible;
+}
+
+.sidebar .cp-info {
+  height: 56px;
+  display: flex;
+  align-items: center;
+  padding-inline: var(--spacing-4);
+  color: var(--on-surface-variant);
+  transition: color var(--tr-duration-short) var(--tr-easing-linear);
 }
 
 
