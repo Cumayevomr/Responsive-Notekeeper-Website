@@ -592,6 +592,25 @@ body {
   cursor: pointer;
 }
 
+.navitem.active {
+  background-color: var(--secondary-container);
+  color: var(--secondary-container);
+  --state-layer-bg:var(--on-secondary-container);
+}
+
+.nav-item .text {flex-grow: 1;} 
+
+.nav-item .icon-btn {
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity var(--tr-duration-short) var(--tr-easing-linear);
+}
+
+.nav-item:where(:hover, :focus-within) .icon-btn {
+  opacity: 1;
+  visibility: visible;
+}
+
 
 /*-----------------------------------*\
   #MAIN
