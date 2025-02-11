@@ -549,6 +549,10 @@ body {
   transition: box-shadow var(--tr-duration-short) var(--tr-easing-linear);
  }
 
+ .fab:hover {box-shadow: var(--shadow-2); }
+
+ .fab .text {padding-inline-end: var(--spacing-2); }
+
 
 
 /**
@@ -759,6 +763,13 @@ body {
 }
 
 
+
+.main .fab {
+  position: fixed;
+  bottom: var(--spacing-4);
+  right: var(--spacing-4);
+  z-index: 2;
+}
 
 
 
