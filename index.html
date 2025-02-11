@@ -48,7 +48,7 @@
 </head>
 <body>
     
-    <header class="sidebar active" data-sidebar>
+    <header class="sidebar" data-sidebar>
 
         <div class="wrapper wrapper1">
 
@@ -106,26 +106,6 @@
 
         </div>
 
-        <div class="nav-item">
-
-            <span class="text text-label-large" data-notebook-field>My Notebook</span>
-
-            <button class="icon-btn small" aria-label="Edit Notebook" data-tooltrip="Edit Notebook" data-edit-btn>
-                <span class="material-symbols-rounded" aria-hidden="true">edit</span>
-
-                <div class="state-layer"></div>
-            </button>
-
-            <button class="icon-btn small" aria-label="Delete Notebook" data-tooltrip="Delete Notebook" data-Delete-btn>
-                <span class="material-symbols-rounded" aria-hidden="true">delete</span>
-
-                <div class="state-layer"></div>
-            </button>
-
-            <div class="state-layer"></div>
-
-        </div>
-
     </nav>
 
     <div class="cp-info">
@@ -136,6 +116,32 @@
     </header>
 
     <div class="overlay" data-sidebar-overlay data-sidebar-toogler></div>
+
+
+    <main class="main">
+
+        <div class="header">
+            <div class="wrapper">
+
+                <p class="title text-title-large" data-greeting>Good Morning</p>
+
+                <span class="text text-body-medium" data-current-date>Sat, Sep 22 2023</span>
+            </div>
+
+            <button class="theme-btn icon-btn large" aria-label="Toogle theme" data-tooltrip="Toogle theme" data-theme-btn>
+                <span class="material-symbols-rounded dark-icon" aria-hidden="true">dark_mode</span>
+                <span class="material-symbols-rounded light-icon" aria-hidden="true">light_mode</span>
+
+                <div class="state-layer"></div>
+            </button>
+
+            <button class="menu-btn icon-btn large" aria-label="Open menu" data-sidebar-toogler>
+                
+            </button>
+
+        </div>
+
+    </main>
 
 
 </body>
