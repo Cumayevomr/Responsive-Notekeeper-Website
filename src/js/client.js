@@ -4,6 +4,10 @@
 
 'use strict';
 
+import { NavItem } from "./components/NavItem";
+
+const /** {HTMLElement} */ $sidebarList = document.querySelector('data-sidebar-lsit');
+
 /**
  * @namespace
  * @property {Object} notebook
@@ -20,7 +24,8 @@ export const client = {
      */
     notebook: {
         create(notebookData) {
-            consst /** {HTMLElement} */  $navItem = $navItem();
+            const /** {HTMLElement} */  $navItem = NavItem(notebookData.id, notebookData.name);
+            $sidebarList.appendChild($navItem);
         }
     }
 }

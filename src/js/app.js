@@ -11,6 +11,7 @@
 import { addEventOnElements, getGreetingMsg, activeNotebook, makeElemEditable } from "./utils.js";
 import { Tooltip } from "./components/Tooltip.js";
 import { db } from "./db.js";
+import { client } from "./client.js";
 
 
 /**
@@ -95,5 +96,6 @@ const createNotebook = function (event) {
 
         const /** {Object} */ notebookData = db.post.notebook(this.textContent || 'Untiitled'); // this: $navItemField
         this.parentElement.remove();
+        client.notebook.create(notebookData);
     }
 }
