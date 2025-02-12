@@ -8,7 +8,7 @@
   * Module import
   */
 
-import { addEventOnElements, getGreetingMsg } from "./utils.js";
+import { addEventOnElements, getGreetingMsg, activeNotebook, makeElemEditable } from "./utils.js";
 import { Tooltip } from "./components/Tooltip.js";
 
 
@@ -31,7 +31,7 @@ addEventOnElements($sidebarTogglers, 'click', function () {
  * Intialize tooltip behaveor for all DOM elements with 'data-tooltip' attribute.
  */
 
-const /** {Array<HTMLElement>} */ $tooltipElems = document.querySelectorAll('[data-tooltip');
+const /** {Array<HTMLElement>} */ $tooltipElems = document.querySelectorAll('[data-tooltip]');
 $tooltipElems.forEach($elem => Tooltip($elem));
 
 
@@ -40,7 +40,7 @@ $tooltipElems.forEach($elem => Tooltip($elem));
  * Show greeting message  on homepage
  */
 
-const /** {HTMLElement} */ $greetElem = document.querySelector('[data-greeting');
+const /** {HTMLElement} */ $greetElem = document.querySelector('[data-greeting]');
 const /** {number} */ currentHour = new Date().getHours();
 $greetElem.textContent = getGreetingMsg(currentHour);
 
@@ -48,5 +48,36 @@ $greetElem.textContent = getGreetingMsg(currentHour);
  * Show current date on homepage
  */
 
-const /** {HTMLElement} */ $currentDateElem = document.querySelector('[data-current-date');
+const /** {HTMLElement} */ $currentDateElem = document.querySelector('[data-current-date]');
 $currentDateElem.textContent = new Date().toDateString().replace(' ', ',')
+
+
+/**
+ * Notebook create field
+ */
+const /** {HTMLElement} */ $sidebarList = document.querySelector('[data-sidebar-list]');
+const /** {HTMLElement} */ $addNotebookBtn = document.querySelector('[data-add-notebook]');
+
+
+
+const showNoteookField = function () {
+    const /** {HTMLElement} */ $navItem = document.careteElement('div');
+    $navItem.classList.add('nav-item');
+
+    $navItem.inneHTML = `
+    <span class="text text-label-large" data-notebook-field></span>
+
+    <div class="state-layer"></div>
+    `;
+
+    $sidebarList.appendChild($navItem);
+
+    const /** {HTMLElement} */ $navItemField = $navItem.querySelector('[data-notebook-field]');
+
+    // Active new created notebook and deactive the last one.
+    activeNotebook.call($navItem);
+
+    makeElemEditable($navItemField);
+}
+
+$addNotebookBtn.addEventListener('click', showNoteookField);

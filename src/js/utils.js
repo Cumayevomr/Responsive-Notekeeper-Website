@@ -32,12 +32,30 @@ const getGreetingMsg = function (currentHour) {
     currentHour < 17 ? 'Afternoon' :
     currentHour < 20 ? 'Evening' :
     'Night';
-
-    return `Good ${greeting}`;
 }
+
+    let /** {HTMLElement | undifined} */ $lastActiveNavItem;
+
+    const activeNotebook = function () {
+        $lastActiveNavItem?.classList.remove('active');
+        this.classList.add('active');  // this: $navitem
+        $lastActiveNavItem = this;  // this: $navitem
+    }
+    /**
+     * 
+     * @param {HTMLElement} $element - the DOM element to make editable. 
+     */
+    const makeElemEditable = function($element) {
+        $element.setAttribute('contenteditable', true);
+        $element.focus();
+    }
+
+
 
 
 export {
     addEventOnElements,
-    getGreetingMsg
+    getGreetingMsg,
+    activeNotebook,
+    makeElemEditable
 }
