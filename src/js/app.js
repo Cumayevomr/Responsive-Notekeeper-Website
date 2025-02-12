@@ -78,6 +78,19 @@ const showNoteookField = function () {
     activeNotebook.call($navItem);
 
     makeElemEditable($navItemField);
+
+    $navItemField.addEventListener('keydown', createNotebook);
 }
 
 $addNotebookBtn.addEventListener('click', showNoteookField);
+
+/**
+ * 
+ * @param {KeyboardEvent} event 
+ */
+
+const createNotebook = function (event) {
+    if (event.key === 'Enter') {
+        
+    }
+}
