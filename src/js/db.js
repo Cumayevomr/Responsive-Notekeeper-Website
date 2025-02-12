@@ -19,4 +19,41 @@ const initDb = function () {
 
 initDB();
 
-export const db = {}
+
+const readDB = function () {
+    notekeeperDB = JSON.parse(localStorage.getItem('notekeeperDB'));
+}
+
+
+const writeDB = function () {
+    localStorage.setItem('notekeeperDB', JSON.stringify)();
+}
+
+
+
+/**
+ * @namespace
+ * @property {Object} get 
+ * @property {Object} post
+ * @property {Object} update
+ * @property {Object} delete
+ */
+
+export const db = {
+
+    post: {
+
+        /**
+         * @function
+         * @param {string} name
+         * @returns {Object}
+         */
+
+        notebook(name) {
+             readDB();
+
+             writeDB();
+        }
+    }
+
+}
