@@ -93,6 +93,7 @@ $addNotebookBtn.addEventListener('click', showNoteookField);
 const createNotebook = function (event) {
     if (event.key === 'Enter') {
 
-        db.post.notebook(this.textContent || 'Untiitled') // this: $navItemField
+        const /** {Object} */ notebookData = db.post.notebook(this.textContent || 'Untiitled'); // this: $navItemField
+        this.parentElement.remove();
     }
 }

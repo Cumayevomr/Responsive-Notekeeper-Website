@@ -4,6 +4,8 @@
 
 'use strict';
 
+import { generateID } from "./utils";
+
 let /** {Object} */  notekeeperDB = {};
 
 const initDb = function () {
@@ -52,7 +54,18 @@ export const db = {
         notebook(name) {
              readDB();
 
+             const /**{Object} */ notebookData = {
+                id: generateID(),
+                name,
+                notes: []
+             }
+
+             notekeeperDB.notebooks.push(notebookData);
+
+            
              writeDB();
+
+             return notebookData;
         }
     }
 
