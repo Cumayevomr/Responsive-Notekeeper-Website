@@ -8,7 +8,7 @@
   * Module import
   */
 
-import { addEventOnElements } from "./utils.js";
+import { addEventOnElements, getGreetingMsg } from "./utils.js";
 /**
   * Toggle sidebar in small screen
   */
@@ -29,3 +29,4 @@ addEventOnElements($sidebarTogglers, 'click', function () {
 
 const /** {HTMLElement} */ $greetElem = document.querySelector('[data-greeting');
 const /** {number} */ currentHour = new Date().getHours();
+$greetElem.textContent = getGreetingMsg(currentHour);
