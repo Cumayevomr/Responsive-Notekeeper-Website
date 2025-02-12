@@ -962,4 +962,16 @@ body {
   .sidebar.active {transform: unset; }
 
   .sidebar .fab {display: flex; }
+
+
+
+
+  /**
+  * MAIN
+  */
+
+  .main {padding-inline: var(--spacing-10); }
+
+  .menu-btn,
+  .main .fab {display: none; }
 }
