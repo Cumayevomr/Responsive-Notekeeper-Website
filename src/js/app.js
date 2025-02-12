@@ -9,6 +9,9 @@
   */
 
 import { addEventOnElements, getGreetingMsg } from "./utils.js";
+import { Tooltip } from "./components/Tooltip.js";
+
+
 /**
   * Toggle sidebar in small screen
   */
@@ -23,6 +26,16 @@ addEventOnElements($sidebarTogglers, 'click', function () {
     $overlay.classList.toggle('active');
 });
 
+
+/**
+ * Intialize tooltip behaveor for all DOM elements with 'data-tooltip' attribute.
+ */
+
+const /** {Array<HTMLElement>} */ $tooltipElems = document.querySelectorAll('[data-tooltip');
+$tooltipElems.forEach($elem => Tooltip($elem));
+
+
+
 /**
  * Show greeting message  on homepage
  */
@@ -30,3 +43,10 @@ addEventOnElements($sidebarTogglers, 'click', function () {
 const /** {HTMLElement} */ $greetElem = document.querySelector('[data-greeting');
 const /** {number} */ currentHour = new Date().getHours();
 $greetElem.textContent = getGreetingMsg(currentHour);
+
+/**
+ * Show current date on homepage
+ */
+
+const /** {HTMLElement} */ $currentDateElem = document.querySelector('[data-current-date');
+$currentDateElem.textContent = new Date().toDateString().replace(' ', ',')
