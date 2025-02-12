@@ -17,3 +17,9 @@ import { addEventOnElements } from "./utils.js";
 const /**{HTMLElement} */ $sidebar = document.querySelector('[data-sidebar]');
 const /**{Array<HTMLElement>} */ $sidebarTooglers = document.querySelector('[data-sidebar-toogler]');
 const /**{Array<HTMLElement>} */ $overlay = document.querySelector('[data-sidebar-overlay]');
+
+
+addEventOnElements($sidebarTooglers, 'click', function () {
+    $sidebar.classList.toogle('active');
+    $overlay.classList.toogle('active');
+});
