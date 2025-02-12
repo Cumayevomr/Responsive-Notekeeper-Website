@@ -975,3 +975,22 @@ body {
   .menu-btn,
   .main .fab {display: none; }
 }
+
+
+/**
+*resposive for larger than 1400px screen
+*/
+
+@media (min-width: 1400px) {
+
+  /**
+  * MAIN
+  */
+
+  .main {
+    max-width: 1480px;
+    width: 100%;
+    margin-inline: auto;
+  }
+  
+}
