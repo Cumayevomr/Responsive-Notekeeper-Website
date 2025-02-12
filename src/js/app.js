@@ -10,6 +10,7 @@
 
 import { addEventOnElements, getGreetingMsg, activeNotebook, makeElemEditable } from "./utils.js";
 import { Tooltip } from "./components/Tooltip.js";
+import { db } from "./db.js";
 
 
 /**
@@ -91,6 +92,6 @@ $addNotebookBtn.addEventListener('click', showNoteookField);
 
 const createNotebook = function (event) {
     if (event.key === 'Enter') {
-        
+
     }
 }
