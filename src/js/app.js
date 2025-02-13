@@ -117,6 +117,7 @@ addEventOnElements($noteCreateBtns, 'click', function () {
         const /** {string} */ activeNotebookId = document.querySelector('[data-notebook].active').dataset.notebook;
 
         const /** {Object} */ noteData = db.post.notebook(activeNotebookId, noteObj);
+        client.note.create(noteData);
         modal.close();
     });
 });

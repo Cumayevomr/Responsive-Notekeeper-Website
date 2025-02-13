@@ -6,6 +6,7 @@
 
 import { NavItem } from "./components/NavItem";
 import { activeNotebook } from "./utils";
+import { Card } from "./components/Card";
 
 const /** {HTMLElement} */ $sidebarList = document.querySelector('[data-sidebar-list]');
 const /** {HTMLElement} */ $notePanelTitle = document.querySelector('[data-note-panel-title]');
@@ -84,5 +85,16 @@ export const client = {
             $deletedNotebook.remove();
         }
 
-    }
+    },
+     note: {
+
+        /**
+         * 
+         * @param {Obj} noteData 
+         */
+        create(noteData) {
+            const /** {HTMLElement} */ $card = Card(noteData);
+            $notePanel.appendChild($card);
+        }
+     }
 }
