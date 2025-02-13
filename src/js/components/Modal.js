@@ -39,8 +39,15 @@ const NoteModal = function (title = 'Untitled', text = 'Add your note ...', time
         `;
 
 
-
+        const /** {HTMLElement} */ $submitBtn = $modal.querySelector('[dta-submit-btn]');
+        $submitBtn.disbled = true;
         const /** {HTMLElement} */ [$titleField, $textField] = $modal.querySelectorAll('[data-note-field]');
+        const enableSubmit = function () {
+            $submitBtn.disabled = !$titleField.value && !$textField.value;
+        }
+
+        $textField.addEventListener('keyup', enableSubmit);
+        $titleField.addEventListener('keyup', enableSubmit);
 
 
 
