@@ -69,9 +69,10 @@ export const db = {
         }
     }
 
-}
 
-get: {
+
+    get: {
+
     /**
      * @function
      * @returns {Array<Object}
@@ -81,4 +82,17 @@ get: {
 
         return notekeeperDB.notebooks;
     }
+},
+
+
+update: {
+    notebook(notekeeperID, name) {
+        readDB();
+
+        const /** {Object} */ notebook = findNotebook();
+
+        writeDB();
+    }
+}
+
 }

@@ -60,10 +60,15 @@ const generateID = function () {
     return new Date().getTime().toString();
 }
 
+const findNotebook = function (db, notebookID) {
+
+}
+
 export {
     addEventOnElements,
     getGreetingMsg,
     activeNotebook,
     makeElemEditable,
     generateID
+    findNotebook
 }

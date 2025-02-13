@@ -5,7 +5,7 @@
 'use strict';
 
 import { Tooltip } from "./Tooltip";
-import { activeNotebook } from "../utils";
+import { activeNotebook, makeElemEditable } from "../utils";
 
 
 const /** {HTMLElement} */ $notePanelTitle = document.querySelector('[data-note-panel-title]');
@@ -47,7 +47,20 @@ export const NavItem = function (id, name) {
     $navItem.addEventListener('click', function () {
         $notePanelTitle.textContent = name;
         activeNotebook.call(this);
-    })
+    });
+
+    const /** {HTMLElement} */ $navItemEditBtn = $navItem.querySelector('[data-edit-btn]');
+    const /** {HTMLElement} */ $navItemField = $navItem.querySelector('[data-notebook-field]');
+
+    $navItemEditBtn.addEventListener('click', makeElemEditable.bind (null, $navItemField));
+
+    $navItemField.addEventListener('keydown', function (event) {
+        if (event.key === 'Enter') {
+
+            this.removeAttribute('connecteditable');
+        }
+    });
+
 
     return $navItem;
 }
