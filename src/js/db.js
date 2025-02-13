@@ -4,7 +4,7 @@
 
 'use strict';
 
-import { generateID } from "./utils";
+import { generateID, findNotebook } from "./utils";
 
 let /** {Object} */  notekeeperDB = {};
 
@@ -89,9 +89,12 @@ update: {
     notebook(notekeeperID, name) {
         readDB();
 
-        const /** {Object} */ notebook = findNotebook();
+        const /** {Object} */ notebook = findNotebook(notekeeperDB, notebookID);
+        notebook.name = name;
 
         writeDB();
+
+        return notebook;
     }
 }
 

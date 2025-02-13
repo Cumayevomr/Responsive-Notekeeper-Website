@@ -60,8 +60,15 @@ const generateID = function () {
     return new Date().getTime().toString();
 }
 
-const findNotebook = function (db, notebookID) {
+/**
+ * 
+ * @param {Object} db 
+ * @param {string} notebookID 
+ * @returns {Object | undefined }
+ */
 
+const findNotebook = function (db, notebookID) {
+    return db.notebooks.find(notebook => notebook.id === notebookID);
 }
 
 export {
@@ -69,6 +76,6 @@ export {
     getGreetingMsg,
     activeNotebook,
     makeElemEditable,
-    generateID
+    generateID,
     findNotebook
 }

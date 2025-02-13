@@ -6,6 +6,7 @@
 
 import { Tooltip } from "./Tooltip";
 import { activeNotebook, makeElemEditable } from "../utils";
+import { db } from "../db";
 
 
 const /** {HTMLElement} */ $notePanelTitle = document.querySelector('[data-note-panel-title]');
@@ -58,6 +59,7 @@ export const NavItem = function (id, name) {
         if (event.key === 'Enter') {
 
             this.removeAttribute('connecteditable');
+            const updateNotebookData = db.update.notebook(id, this.textContent);
         }
     });
 
