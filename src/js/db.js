@@ -4,7 +4,7 @@
 
 'use strict';
 
-import { generateID, findNotebook, findNotebookIndex,findNote } from "./utils";
+import { generateID, findNotebook, findNotebookIndex,findNote, findNoteIndex } from "./utils";
 
 let /** {Object} */  notekeeperDB = {};
 
@@ -172,7 +172,11 @@ delete: {
         const /** {Object} */  notebook = findNotebook(notekeeperDB, notebookId);
         const /** {number} */  noteIndex = findNotebook(notebook, noteId);
 
+        notebook.notes.splice(noteIndex, 1);
+
         writeDB();
+
+        return notebook.notes;
     }
 
 }

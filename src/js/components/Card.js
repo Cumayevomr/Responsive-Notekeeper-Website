@@ -51,7 +51,15 @@ export const Card = function (noteData) {
             modal.open();
 
             modal.onSubmit(function (isConfirm) {
-                const /** {Array} */ existedNote = db.delete.note(notebookId, id);
+                if (isConfirm) {
+
+                const /** {Array} */ existedNotes = db.delete.note(notebookId, id);
+
+                client.note.delete(id, existedNotes.length);
+            }
+
+            modal.close();
+
             });
         });
 

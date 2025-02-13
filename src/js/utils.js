@@ -116,8 +116,14 @@ const findNote = (db, noteId) => {
 }
 
 
+/**
+ * 
+ * @param {Object} notebook 
+ * @param {string} noteId 
+ * @returns {number}
+ */
 const findNoteIndex = function (notebook, noteId) {
-    return notebook.notes.findIndex(note => note.id === noteId)
+    return notebook.notes.findIndex(note => note.id === noteId);
 }
 
 
@@ -131,5 +137,6 @@ export {
     findNotebook,
     findNotebookIndex,
     getRelativeTime,
-    findNote
+    findNote,
+    findNoteIndex
 }
