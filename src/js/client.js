@@ -11,12 +11,24 @@ import { Card } from "./components/Card";
 const /** {HTMLElement} */ $sidebarList = document.querySelector('[data-sidebar-list]');
 const /** {HTMLElement} */ $notePanelTitle = document.querySelector('[data-note-panel-title]');
 const /** {HTMLElement} */ $notePanel = document.querySelector('[data-note-panel]');
+const /** {Array<HTMLElement>} */ $noteCreateBtns = document.querySelectorAll('[data-note-create-btn]');
 const /** {string} */ emptyNotesTemplate = html`
     <div class="empty-notes">
         <span class="material-symbols-rounded" aria-hidden="true">note_stack</span>
         <div class="text-headline-small">No Notes</div>
     </div>
 `;
+
+/**
+ * 
+ * @param {boolean} isThereAnyNotebook 
+ */
+const disableNoteCreateBtns = function (isThereAnyNotebook) {
+    $noteCreateBtns.forEach($item => {
+        $item[isThereAnyNotebook ? 'removeAttribute' : 'setAttribute']
+        ('disabled', '');
+    });
+}
 
 /**
  * @namespace
@@ -38,6 +50,8 @@ export const client = {
             $sidebarList.appendChild($navItem);
             activeNotebook.call($navItem);
             $notePanelTitle.textContent = notebookData.name;
+            $notePanel.innerHTML = emptyNotesTemplate;
+            disableNoteCreateBtns(true);
         },
 
         /**
@@ -45,6 +59,7 @@ export const client = {
          * @param {Array<Object} notebookList 
          */
         read(notebookList) {
+            disableNoteCreateBtns(notebookList.length);
             notebookList.forEach((notebookData, index) => {
                 const /** {HTMLElement} */ $navItem = NavItem(notebookData.id, notebookData.name);
                 if (index === 0) {
@@ -63,7 +78,7 @@ export const client = {
          * @param {Object} notebookData 
          */
 
-        update: (notebookID, notebookData) {
+        update: (notebookID, notebookData) {    
             
             const /** {HTMLElement} */ $oldNotebook = document.querySelector(`[data-notebook = "${notebookID}"`);
             const /** {HTMLElement} */ $newNotebook = NavItem(notebookData.id,notebookData.name);
@@ -85,7 +100,8 @@ export const client = {
                 $ActiveNavItem.click();
             } else {
                 $notePanelTitle.innerHTML = '';
-                // $notePanel.innerHTML = '';
+                $notePanel.innerHTML = '';
+                disableNoteCreateBtns(false);
             }
 
             $deletedNotebook.remove();
