@@ -75,6 +75,14 @@ export const NavItem = function (id, name) {
         const /** {Object} */  modal = DeleteConfirmModal(name);
 
         modal.open();
+
+        modal.onSubmit(function (isConfirm) {
+            if (isConfirm) {
+                db.delete.notebook(id);
+            }
+
+            modal.close();
+        });
     });
 
     return $navItem;

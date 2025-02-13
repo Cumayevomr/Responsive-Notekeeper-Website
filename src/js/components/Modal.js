@@ -58,7 +58,12 @@ const DeleteConfirmModal = function (title) {
          */
 
             const onSubmit = function (callback) {
+                $actionBtns.forEach($btn => $btn.addEventListener('click', function () {
 
+                    const /** {Boolean} */ isConfirm = this.dataset.actionBtn ==='true' ? true : false;
+
+                    callback(isConfirm);
+                }));
             }
         
 
