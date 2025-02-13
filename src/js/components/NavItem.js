@@ -7,6 +7,7 @@
 import { Tooltip } from "./Tooltip";
 import { activeNotebook, makeElemEditable } from "../utils";
 import { db } from "../db";
+import { DeleteConfirmModal } from "./Modal";
 
 
 const /** {HTMLElement} */ $notePanelTitle = document.querySelector('[data-note-panel-title]');
@@ -71,7 +72,9 @@ export const NavItem = function (id, name) {
     {HTMLElement} */ $navItemDeleteBtn = $navItem.querySelector('[data-delete-btn]');
     $navItemDeleteBtn.addEventListener('click', function () {
 
-        const /** {Object} */  modal = DeleteConfirmModal()
+        const /** {Object} */  modal = DeleteConfirmModal(name);
+
+        modal.open();
     });
 
     return $navItem;
