@@ -60,9 +60,19 @@ export const NavItem = function (id, name) {
 
             this.removeAttribute('connecteditable');
             const updateNotebookData = db.update.notebook(id, this.textContent);
+
+            client.notebook.update(id, updateNotebookData);
         }
     });
 
+
+
+    const /**
+    {HTMLElement} */ $navItemDeleteBtn = $navItem.querySelector('[data-delete-btn]');
+    $navItemDeleteBtn.addEventListener('click', function () {
+
+        const /** {Object} */  modal = DeleteConfirmModal()
+    });
 
     return $navItem;
 }
