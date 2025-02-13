@@ -56,11 +56,24 @@ export const client = {
          */
 
         update: (notebookID, notebookData) {
+            
             const /** {HTMLElement} */ $oldNotebook = document.querySelector(`[data-notebook = "${notebookID}"`);
             const /** {HTMLElement} */ $newNotebook = NavItem(notebookData.id,notebookData.name);
             $notePanelTitle.textContent = notebookData.name;
             $sidebarList.replaceChild($newNotebook, $oldNotebook);
             activeNotebook.call($newNotebook);
+        },
+
+
+        /**
+         * 
+         * @param {string} notebookID 
+         */
+        delete(notebookID) {
+            const /** {HTMLElement} */ $deletedNotebook = document.querySelector('[data-notebook="${notebookID}"]');
+            const /** {HTMLElement | null} */ $ActiveNavItem = $deletedNotebook.nextElementSibling ?? $deletedNotebook.previousElementSibling;
+
+            $deletedNotebook.remove();
         }
 
     }

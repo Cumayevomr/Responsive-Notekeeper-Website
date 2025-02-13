@@ -71,11 +71,24 @@ const findNotebook = function (db, notebookID) {
     return db.notebooks.find(notebook => notebook.id === notebookID);
 }
 
+
+/**
+ * 
+ * @param {Object} db 
+ * @param {string} notebookID 
+ * @returns {number}
+ */
+
+const findNotebookIndex = function (db, notebookID) {
+    return db.notebooks.findIndex(item => item.id === notebookID);
+}
+
 export {
     addEventOnElements,
     getGreetingMsg,
     activeNotebook,
     makeElemEditable,
     generateID,
-    findNotebook
+    findNotebook,
+    findNotebookIndex
 }

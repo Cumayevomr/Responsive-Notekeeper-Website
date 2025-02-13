@@ -8,6 +8,7 @@ import { Tooltip } from "./Tooltip";
 import { activeNotebook, makeElemEditable } from "../utils";
 import { db } from "../db";
 import { DeleteConfirmModal } from "./Modal";
+import { client } from "../client";
 
 
 const /** {HTMLElement} */ $notePanelTitle = document.querySelector('[data-note-panel-title]');
@@ -79,6 +80,7 @@ export const NavItem = function (id, name) {
         modal.onSubmit(function (isConfirm) {
             if (isConfirm) {
                 db.delete.notebook(id);
+                client.notebook.delete(id);
             }
 
             modal.close();
