@@ -115,6 +115,9 @@ export const client = {
          * @param {Obj} noteData 
          */
         create(noteData) {
+
+            if($notePanel.querySelector('[data-note]')) $notePanel.innerHTML = '';
+
             const /** {HTMLElement} */ $card = Card(noteData);
             $notePanel.appendChild($card);
         },
@@ -134,6 +137,17 @@ export const client = {
         } else {
             $notePanel.innerHTML = emptyNotesTemplate;
         }
+        },
+
+        /**
+         * 
+         * @param {string} noteId 
+         * @param {Object} noteData 
+         */
+        update(noteId, noteData) {
+            const /** {HTMLElement} */ $oldCard = document.querySelector('[data-note="${noteId}"]');
+            const /** {HTMLElement} */ $newCard = Card(noteData);
+            $notePanel.replaceChild($newCard, $oldCard);
         }
      }
 }

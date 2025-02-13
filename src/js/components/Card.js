@@ -6,6 +6,9 @@
 
 import { Tooltip } from "./Tooltip";
 import { getRelativeTime } from "../utils";
+import { NoteModal } from "./Modal";
+import { client } from "../client";
+import { db } from "../db";
 
 export const Card = function (noteData) {
     const {id, title, text, postedOn, notebookId } = noteData;
@@ -20,13 +23,27 @@ export const Card = function (noteData) {
         <div class="wrapper">
             <span class="card-time text-label-large">${getRelativeTime(postedOn)}</span>
 
-        <button class="icon-btn large" aria-label="Delete note" data-tooltip="Delete note">
+        <button class="icon-btn large" aria-label="Delete note" data-tooltip="Delete note" data-delete-btn>
             <span class="material-symbols-rounded" aria-hidden="true">delete</span>
 
         <div class="state-layer"></div>
         `;
 
         Tooltip($card.querySelector('[data-tooltip]'));
+
+        $card.addEventListener('click', function () {
+            const /** {Object} */ modal = NoteModal(title, text, getRelativeTime(postedOn));
+            modal.open();
+
+            modal.onSubmit(function (noteData) {
+                const updatedData = db.update.note(id, noteData);
+                client.note.update(id, updatedData);
+                modal.close();
+            });
+        });
+
+
+        const /** {HTMLElement} */ $deleteBtn = $card.querySelector('[data-delete-btn]');
 
         return $card;
 }

@@ -4,7 +4,7 @@
 
 'use strict';
 
-import { generateID, findNotebook, findNotebookIndex } from "./utils";
+import { generateID, findNotebook, findNotebookIndex,findNote } from "./utils";
 
 let /** {Object} */  notekeeperDB = {};
 
@@ -133,7 +133,19 @@ update: {
         writeDB();
 
         return notebook;
+    },
+
+    note(noteId, object) {
+        readDB();
+
+        const /** {Object} */  $oldNote = findNote(notekeeperDB, noteId);
+        const /** {Object} */  $newNote = Object.assign($oldNote, object);
+
+        writeDB();
+        
+        return newNote;
     }
+    
 },
 
 delete: {
@@ -144,7 +156,7 @@ delete: {
  * @param {string} notebookID 
  */
 
-    notebook(notebookID) {
+    notebook(notebookID, name) {
         readDB();
 
         const /** {Number} */  notebookIndex = findNotebookIndex(notekeeperDB, notebookID);
@@ -152,7 +164,7 @@ delete: {
 
         writeDB();
 
-    }
+    },
 
 }
 
