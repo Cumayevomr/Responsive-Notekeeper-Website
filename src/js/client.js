@@ -9,6 +9,7 @@ import { activeNotebook } from "./utils";
 
 const /** {HTMLElement} */ $sidebarList = document.querySelector('[data-sidebar-list]');
 const /** {HTMLElement} */ $notePanelTitle = document.querySelector('[data-note-panel-title]');
+const /** {HTMLElement} */ $notePanel = document.querySelector('[data-note-panel]');
 
 /**
  * @namespace
@@ -72,6 +73,13 @@ export const client = {
         delete(notebookID) {
             const /** {HTMLElement} */ $deletedNotebook = document.querySelector('[data-notebook="${notebookID}"]');
             const /** {HTMLElement | null} */ $ActiveNavItem = $deletedNotebook.nextElementSibling ?? $deletedNotebook.previousElementSibling;
+
+            if ($ActiveNavItem) {
+                $ActiveNavItem.click();
+            } else {
+                $notePanelTitle.innerHTML = '';
+                $notePanel.innerHTML = '';
+            }
 
             $deletedNotebook.remove();
         }
