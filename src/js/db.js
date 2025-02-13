@@ -71,3 +71,14 @@ export const db = {
 
 }
 
+get: {
+    /**
+     * @function
+     * @returns {Array<Object}
+     */
+    notebook() {
+        readDB();
+
+        return notekeeperDB.notebooks;
+    }
+}

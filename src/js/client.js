@@ -30,6 +30,20 @@ export const client = {
             $sidebarList.appendChild($navItem);
             activeNotebook.call($navItem);
             $notePanelTitle.textContent = notebookData.name;
+        },
+
+        /**
+         * 
+         * @param {Array<Object} notebookList 
+         */
+        read(notebookList) {
+            notebookList.forEach((notebookData, index) => {
+                const /** {HTMLElement} */ $navItem = NavItem(notebookData.id, notebookData.name);
+                if (index === 0) {
+                    activeNotebook.call($navItem);
+                    
+                }
+            });
         }
     }
 }
