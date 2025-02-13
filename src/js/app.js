@@ -105,3 +105,10 @@ const renderExistedNotebook = function () {
     const /** {Array} */ notebookList = db.get.notebook();
     client.notebook.read(notebookList);
 }
+
+
+const /** {Array<HTMLElement>} */ $noteCreateBtns = document.querySelectorAll('[data-note-create-btn]');
+
+addEventOnElements($noteCreateBtns, 'click', function () {
+    const /** {Onject} */  modal = NoteModal();
+});

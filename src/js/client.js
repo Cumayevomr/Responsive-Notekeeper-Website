@@ -78,7 +78,7 @@ export const client = {
                 $ActiveNavItem.click();
             } else {
                 $notePanelTitle.innerHTML = '';
-                $notePanel.innerHTML = '';
+                // $notePanel.innerHTML = '';
             }
 
             $deletedNotebook.remove();
