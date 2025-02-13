@@ -97,7 +97,7 @@ const getRelativeTime = function(milliseconds) {
     const /** {Number} */ day = Math.floor(hour / 24);
 
     return minute < 1 ? 'Just now' : minute < 60 ? `${minute} min ago`
-    : hour < 24 `${hour} hour ago` : `${day} day ago`; 
+    : hour < 24 ? `${hour} hour ago` : `${day} day ago`; 
 }
 
 

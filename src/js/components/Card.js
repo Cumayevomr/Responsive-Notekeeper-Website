@@ -5,6 +5,7 @@
 'use strict';
 
 import { Tooltip } from "./Tooltip";
+import { getRelativeTime } from "../utils";
 
 export const Card = function (noteData) {
     const {id, title, text, postedOn, notebookId } = noteData;

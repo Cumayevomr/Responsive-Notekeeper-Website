@@ -107,6 +107,18 @@ get: {
         readDB();
 
         return notekeeperDB.notebooks;
+    },
+
+    /**
+     * 
+     * @param {string} notebookID 
+     * @returns {Array<Object>}
+     */
+    note(notebookID) {
+        readDB();
+
+        const /** {Object} */ notebook = findNotebook(notekeeperDB, notebookID);
+        return notebook.notes;
     }
 },
 
