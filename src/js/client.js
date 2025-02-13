@@ -41,8 +41,10 @@ export const client = {
                 const /** {HTMLElement} */ $navItem = NavItem(notebookData.id, notebookData.name);
                 if (index === 0) {
                     activeNotebook.call($navItem);
-                    
+                    $notePanelTitle.textContent = notebookData.name;
                 }
+
+                $sidebarList.appendChild($navItem);
             });
         }
     }

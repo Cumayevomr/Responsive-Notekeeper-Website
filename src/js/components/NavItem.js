@@ -5,6 +5,10 @@
 'use strict';
 
 import { Tooltip } from "./Tooltip";
+import { activeNotebook } from "../utils";
+
+
+const /** {HTMLElement} */ $notePanelTitle = document.querySelector('[data-note-panel-title]');
 
 /**
  * @param {string} id
@@ -39,6 +43,11 @@ export const NavItem = function (id, name) {
 
     const /** {Array<HTMLElement>} */ $tooltipElems = $navItem.querySelectorAll('[data-tooltip]');
     $tooltipElems.forEach($elem => Tooltip($elem));
+
+    $navItem.addEventListener('click', function () {
+        $notePanelTitle.textContent = name;
+        activeNotebook.call(this);
+    })
 
     return $navItem;
 }
