@@ -4,6 +4,8 @@
 
 'use strict';
 
+import { Tooltip } from "./Tooltip";
+
 /**
  * @param {string} id
  * @param {string} id
@@ -34,6 +36,9 @@ export const NavItem = function (id, name) {
             <div class="state-layer"></div>
 
     `;
+
+    const /** {Array<HTMLElement>} */ $tooltipElems = $navItem.querySelectorAll('[data-tooltip]');
+    $tooltipElems.forEach($elem => Tooltip($elem));
 
     return $navItem;
 }

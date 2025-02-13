@@ -99,3 +99,8 @@ const createNotebook = function (event) {
         client.notebook.create(notebookData);
     }
 }
+
+
+const renderExistedNotebook = function () {
+    const /** {Array} */ notebookList = db.get.notebook();
+}
