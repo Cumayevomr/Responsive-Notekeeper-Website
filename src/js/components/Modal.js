@@ -15,7 +15,7 @@ const NoteModal = function (title = 'Untitled', text = 'Add your note ...', time
 
     $modal.innerHTML = `
 
-            <button class="icon-btn large" aria-label="Close modal">
+            <button class="icon-btn large" aria-label="Close modal" data-close-btn>
 
             <span class="material-symbols-rounded" aria-hidden="true">close</span>
 
@@ -48,9 +48,22 @@ const NoteModal = function (title = 'Untitled', text = 'Add your note ...', time
             document.body.appendChild($modal);
             document.body.appendChild($overlay);
             $titleField.focus();
-
-            return { open }
         }
+
+
+        const close = function () {
+            document.body.removeChild($modal);
+            document.body.removeChild($overlay);
+            $titleField.focus();
+        }
+
+
+
+        const /** {HTMLElement} */ $closeBtn = $modal.querySelector('[data-close-btn]');
+        $closeBtn.addEventListener('click', close);
+
+
+            return { open, close }
 }
 
 /**
