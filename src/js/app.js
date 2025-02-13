@@ -112,4 +112,11 @@ const /** {Array<HTMLElement>} */ $noteCreateBtns = document.querySelectorAll('[
 addEventOnElements($noteCreateBtns, 'click', function () {
     const /** {Onject} */  modal = NoteModal();
     modal.open();
+
+    modal.onSubmit(noteObj => {
+        const /** {string} */ activeNotebookId = document.querySelector('[data-notebook].active').dataset.notebook;
+
+        const /** {Object} */ noteData = db.post.notebook(activeNotebookId, noteObj);
+        modal.close();
+    });
 });

@@ -66,12 +66,38 @@ export const db = {
              writeDB();
 
              return notebookData;
+        },
+
+        /**
+         * 
+         * @param {string} notebookID 
+         * @param {Object} Object 
+         * @returns {Object}
+         */
+        note(notebookID, Object) {
+            readDB();
+
+            const /**{Object} */  notebook = findNotebook(notekeeperDB, notebookID);
+
+            const /** {Object} */ noteData = {
+                id: generateID(),
+                notebookID,
+                ... object,
+                pastedOn: new Date().getTime()
+
+            }
+
+            notebook.notes.unshift(noteData);
+            readDB();
+
+            return noteData;
+
         }
-    }
+    },
 
 
 
-    get: {
+get: {
 
     /**
      * @function
