@@ -12,7 +12,7 @@ import { addEventOnElements, getGreetingMsg, activeNotebook, makeElemEditable } 
 import { Tooltip } from "./components/Tooltip.js";
 import { db } from "./db.js";
 import { client } from "./client.js";
-
+import { NoteModal } from "./components/Modal.js";
 
 /**
   * Toggle sidebar in small screen
@@ -111,4 +111,5 @@ const /** {Array<HTMLElement>} */ $noteCreateBtns = document.querySelectorAll('[
 
 addEventOnElements($noteCreateBtns, 'click', function () {
     const /** {Onject} */  modal = NoteModal();
+    modal.open();
 });

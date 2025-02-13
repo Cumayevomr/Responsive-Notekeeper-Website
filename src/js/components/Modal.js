@@ -118,4 +118,4 @@ const DeleteConfirmModal = function (title) {
 
 }
 
-export{DeleteConfirmModal }
+export{DeleteConfirmModal, NoteModal }
