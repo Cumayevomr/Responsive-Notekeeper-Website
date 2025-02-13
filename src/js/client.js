@@ -11,6 +11,12 @@ import { Card } from "./components/Card";
 const /** {HTMLElement} */ $sidebarList = document.querySelector('[data-sidebar-list]');
 const /** {HTMLElement} */ $notePanelTitle = document.querySelector('[data-note-panel-title]');
 const /** {HTMLElement} */ $notePanel = document.querySelector('[data-note-panel]');
+const /** {string} */ emptyNotesTemplate = html`
+    <div class="empty-notes">
+        <span class="material-symbols-rounded" aria-hidden="true">note_stack</span>
+        <div class="text-headline-small">No Notes</div>
+    </div>
+`;
 
 /**
  * @namespace
@@ -95,6 +101,23 @@ export const client = {
         create(noteData) {
             const /** {HTMLElement} */ $card = Card(noteData);
             $notePanel.appendChild($card);
+        },
+
+        /**
+         * @param {Array<Object>} noteList
+         */
+        read(noteList) {
+
+            if (noteList.length) {
+                $notePanel.innerHTML = '';
+
+            noteList.forEach(noteData => {
+                const /** {HTMLElement} */ $card = Card(noteData);
+                $notePanel.appendChild($card);
+            });
+        } else {
+            $notePanel.innerHTML = emptyNotesTemplate;
+        }
         }
      }
 }

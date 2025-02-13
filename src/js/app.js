@@ -126,7 +126,9 @@ addEventOnElements($noteCreateBtns, 'click', function () {
 const renderExistedNote = function () {
     const /** {string | undefined} */ activeNotebookId = document.querySelector('[data-notebook].active')?.dataset.notebook;
     if (activeNotebookId) {
-        const /** {Array<Object} */ noteList = db.get.note();
-        
+        const /** {Array<Object} */ noteList = db.get.note(activeNotebook);
+
+        client.note.read(noteList);
+
     }
 }
