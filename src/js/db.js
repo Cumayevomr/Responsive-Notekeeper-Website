@@ -166,6 +166,15 @@ delete: {
 
     },
 
+    note(notebookId, noteId) {
+        readDB();
+
+        const /** {Object} */  notebook = findNotebook(notekeeperDB, notebookId);
+        const /** {number} */  noteIndex = findNotebook(notebook, noteId);
+
+        writeDB();
+    }
+
 }
 
 }

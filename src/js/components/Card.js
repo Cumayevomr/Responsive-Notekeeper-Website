@@ -6,7 +6,7 @@
 
 import { Tooltip } from "./Tooltip";
 import { getRelativeTime } from "../utils";
-import { NoteModal } from "./Modal";
+import { DeleteConfirmModal, NoteModal } from "./Modal";
 import { client } from "../client";
 import { db } from "../db";
 
@@ -44,6 +44,16 @@ export const Card = function (noteData) {
 
 
         const /** {HTMLElement} */ $deleteBtn = $card.querySelector('[data-delete-btn]');
+        $deleteBtn.addEventListener('click', function (event) {
+            event.stopImmediatePropagation();
+
+            const /** {Object} */ modal = DeleteConfirmModal(title);
+            modal.open();
+
+            modal.onSubmit(function (isConfirm) {
+                const /** {Array} */ existedNote = db.delete.note(notebookId, id);
+            });
+        });
 
         return $card;
 }

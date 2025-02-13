@@ -116,6 +116,12 @@ const findNote = (db, noteId) => {
 }
 
 
+const findNoteIndex = function (notebook, noteId) {
+    return notebook.notes.findIndex(note => note.id === noteId)
+}
+
+
+
 export {
     addEventOnElements,
     getGreetingMsg,
