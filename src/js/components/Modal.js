@@ -70,7 +70,24 @@ const NoteModal = function (title = 'Untitled', text = 'Add your note ...', time
         $closeBtn.addEventListener('click', close);
 
 
-            return { open, close }
+
+        /**
+         * 
+         * @param {Function} callback 
+         */
+        const onSubmit = function (callback) {
+            $submitBtn.addEventListener('click', function() {
+                const /** {Object} */ noteData = {
+                    title: $titleField.value,
+                    text: $textField.value
+                }
+
+                callback(noteData);
+            });
+        }
+
+
+            return { open, close, onSubmit }
 }
 
 /**
